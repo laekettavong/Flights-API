@@ -6,8 +6,6 @@ import Session, { SessionDocument } from '../model/session.model'
 import { UserDocument } from '../model/user.model';
 import { findUser } from '../service/user.service';
 import { sign, verify } from '../utils/jwt.utils';
-//import { findUser } from './user.service';
-// src/service/session.service.ts
 
 export const createSession  =async (userId: string, userAgent: string) => {
   const session = await Session.create( {user: userId, userAgent });

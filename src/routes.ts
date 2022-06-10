@@ -12,6 +12,7 @@ import {
   getUserSessionsHandler,
   invalidateUserSessionHandler, 
 } from './controller/session.controller';
+import { getAirlinesHandler } from './controller/airline.controller';
 import { validateRequest, requiresUser } from './middleware';
 import { createUserSchema, createUserSessionSchema  } from './schema/user.schema';
 import { createFlightSchema, deleteFlightSchema, updateFlightSchema  } from './schema/flight.schema';
@@ -45,4 +46,46 @@ export default function(app: Express){
 
   // delete a flight
   app.delete('/api/v1/flights/:flightId',  [requiresUser, validateRequest(deleteFlightSchema)], deleteFlightHandler)
+
+  // get airlines
+  app.get('/api/v1/airlines', getAirlinesHandler);
 }
+
+/*
+
+Airlines
+      {
+            "id": "1",
+            "fleet_average_age": "10.9",
+            "airline_id": "1",
+            "callsign": "AMERICAN",
+            "hub_code": "DFW",
+            "iata_code": "AA",
+            "icao_code": "AAL",
+            "country_iso2": "US",
+            "date_founded": "1934",
+            "iata_prefix_accounting": "1",
+            "airline_name": "American Airlines",
+            "country_name": "United States",
+            "fleet_size": "963",
+            "status": "active",
+            "type": "scheduled"
+        },
+        {
+            "id": "2",
+            "fleet_average_age": "17",
+            "airline_id": "2",
+            "callsign": "DELTA",
+            "hub_code": "ATL",
+            "iata_code": "DL",
+            "icao_code": "DAL",
+            "country_iso2": "US",
+            "date_founded": "1928",
+            "iata_prefix_accounting": "6",
+            "airline_name": "Delta Air Lines",
+            "country_name": "United States",
+            "fleet_size": "823",
+            "status": "active",
+            "type": "scheduled,division"
+        },
+*/

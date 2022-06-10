@@ -45,7 +45,7 @@ export const deleteFlightSchema = object({
 
 type StringOrNil = string | null | undefined;
 
-interface FlightDepartureArrivalPagination {
+export interface PayloadPagination {
   limit: number;
   offset: number;
   count: number;
@@ -92,7 +92,7 @@ export interface FlightDepartureArrivalData {
 }
 
 export interface FlightDepartureArrivalPayload {
-  pagination: FlightDepartureArrivalPagination;
+  pagination: PayloadPagination;
   data: Array<FlightDepartureArrivalData>;
 }
 
