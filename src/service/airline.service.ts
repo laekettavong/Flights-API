@@ -7,7 +7,6 @@ const getAirlinetData = (airlinePayload: AirlineDataPayload): Array<InternalAirl
   return mapAirlineData(data);
 }
 
-// the free aviationstack API plan does not support flight date search, hence this method only supports today's flights
 export const getAirlines = async (): Promise<Array<InternalAirlineData>> => {
   const instance = getAxiosInstance();
   const res = await instance.get('/v1/airlines');
